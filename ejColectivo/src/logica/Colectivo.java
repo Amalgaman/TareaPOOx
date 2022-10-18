@@ -1,4 +1,4 @@
-package ejColectivo;
+package logica;
 
 public class Colectivo {
 
@@ -9,13 +9,13 @@ public class Colectivo {
 	private int capacidad_maxima;
 	private double tarifa;
 	
-	public Colectivo(int id_colectivo, String patente, Motor motor, int cantidad_pasajeros, int capacidad_maxima,
+	public Colectivo(int id_colectivo, String patente, Motor motor, int capacidad_maxima,
 			double tarifa) {
 		super();
 		this.id_colectivo = id_colectivo;
 		this.patente = patente;
 		this.motor = motor;
-		this.cantidad_pasajeros = 0;
+		this.cantidad_pasajeros = 14;
 		this.capacidad_maxima = capacidad_maxima;
 		this.tarifa = tarifa;
 	}
@@ -56,10 +56,14 @@ public class Colectivo {
 		this.tarifa = tarifa;
 	}
 	
-	public void verificarEstado() {
+	public boolean realizarViaje() {
 		
-		System.out.println("-Estado del motor: "+this.motor.getEstado());
-		System.out.println("-Cantidad de pasajeros: "+this.cantidad_pasajeros+"/"+this.capacidad_maxima);
+		if(this.motor.arrancar()) {
+			this.cantidad_pasajeros = this.cantidad_pasajeros - (int)(Math.random()*this.cantidad_pasajeros+1);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 }

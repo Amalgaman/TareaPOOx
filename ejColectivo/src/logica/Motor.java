@@ -1,4 +1,4 @@
-package ejColectivo;
+package logica;
 
 public class Motor {
 
